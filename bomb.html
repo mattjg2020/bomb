@@ -1,0 +1,20 @@
+<body>
+    <form id="form">
+        <input type="text" id="text"/>
+        <input type="button" value="submit" onclick="test()">
+    </form>
+    <p id="p"></p>
+
+</body>
+</html>
+
+<script>
+    function test(){
+        if(document.getElementById('text').value=="CORRECT"){
+            document.getElementById('form').style.visibility = 'hidden';
+            document.getElementById('p').innerHTML = "EXIT OUT OF THIS DOOR"
+        }else{
+            alert("incorrect passcode: please try again")
+        }
+    }
+</script>
