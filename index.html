@@ -1,5 +1,6 @@
 <body>
     <form id="form">
+        <p>Enter the 9 digit code to access the plans:</p>
         <input type="text" id="text"/>
         <input type="button" value="submit" onclick="test()">
     </form>
@@ -10,9 +11,9 @@
 
 <script>
     function test(){
-        if(document.getElementById('text').value=="CORRECT"){
+        if(document.getElementById('text').value=="512100407"){
             document.getElementById('form').style.visibility = 'hidden';
-            document.getElementById('p').innerHTML = "EXIT OUT OF THIS DOOR"
+            document.getElementById('p').innerHTML = "Here are da plans"
         }else{
             alert("incorrect passcode: please try again")
         }
