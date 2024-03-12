@@ -1,17 +1,17 @@
 <body>
+    <p id="p">Please enter the 9 digit code to access the plans:</p>
     <form id="form">
-        <p>Enter the 9 digit code to access the plans:</p>
-        <input type="text" id="text"/>
+        <input type="number" id="code"/>
         <input type="button" value="submit" onclick="test()">
     </form>
-    <p id="p"></p>
+    
 
 </body>
 </html>
 
 <script>
     function test(){
-        if(document.getElementById('text').value=="512100407"){
+        if(document.getElementById('code').value=="512100407"){
             document.getElementById('form').style.visibility = 'hidden';
             document.getElementById('p').innerHTML = "Here are da plans"
         }else{
