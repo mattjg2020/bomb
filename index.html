@@ -1,17 +1,25 @@
 <body>
+<style>
+	.numb {
+    	width: 1em; 
+        text-align: center;
+    }
+</style>
+
+
     <title>Bomb.com</title>
     <p id="p">Please enter the 9 digit code to access the plans:</p>
     <form id="form">
-        <input type="number" id="1" min="0" max="9"/>
-        <input type="number" id="2" min="0" max="9"/>
-        <input type="number" id="3" min="0" max="9"/>
-        <input type="number" id="4" min="0" max="9"/>
-        <input type="number" id="5" min="0" max="9"/>
-        <input type="number" id="6" min="0" max="9"/>
-        <input type="number" id="7" min="0" max="9"/>
-        <input type="number" id="8" min="0" max="9"/>
-        <input type="number" id="9" min="0" max="9"/>
-        <input type="button" value="submit" onclick="test()">
+        <input type="text" class="numb" id="1" maxlength="1" oninput="next(1)" />
+        <input type="text" class="numb" id="2" maxlength="1" oninput="next(2)"/>
+        <input type="text" class="numb" id="3" maxlength="1" oninput="next(3)"/>
+        <input type="text" class="numb" id="4" maxlength="1" oninput="next(4)"/>
+        <input type="text" class="numb" id="5" maxlength="1" oninput="next(5)"/>
+        <input type="text" class="numb" id="6" maxlength="1" oninput="next(6)"/>
+        <input type="text" class="numb" id="7" maxlength="1" oninput="next(7)"/>
+        <input type="text" class="numb" id="8" maxlength="1" oninput="next(8)"/>
+        <input type="text" class="numb" id="9" maxlength="1" oninput="next(9)"/>
+        <input type="button" id="button" value="submit" onclick="test()">
     </form>
     
 
@@ -19,6 +27,8 @@
 </html>
 
 <script>
+	document.getElementById('1').focus();
+    
     function test(){
         var WRONG = "incorrect passcode: please try again"
         
@@ -33,14 +43,29 @@
                                     if(document.getElementById('9').value=="7"){
                         document.getElementById('form').style.visibility = 'hidden';
                         document.getElementById('p').innerHTML = "Here are da plans"
-        }else{alert(WRONG)}
-        }else{alert(WRONG)}
-        }else{alert(WRONG)}
-        }else{alert(WRONG)}
-        }else{alert(WRONG)}
-        }else{alert(WRONG)}
-        }else{alert(WRONG)}
-        }else{alert(WRONG)}  
-        }else{alert(WRONG)}
+        }else{alert(WRONG); clear()}
+        }else{alert(WRONG); clear()}
+        }else{alert(WRONG); clear()}
+        }else{alert(WRONG); clear()}
+        }else{alert(WRONG); clear()}
+        }else{alert(WRONG); clear()}
+        }else{alert(WRONG); clear()}
+        }else{alert(WRONG); clear()}  
+        }else{alert(WRONG); clear()}
+    }
+    
+    function next(i){
+    	if(i<9 && document.getElementById(i).value.length == 1){
+    		document.getElementById(i+1).focus();
+        }else if (i==9){
+        	document.getElementById("button").focus();
+        }else{}
+    }
+    
+    function clear(){
+    	for(i=1; i<10; i++){
+        	document.getElementById(i).value = "";
+            document.getElementById('1').focus();
+        }
     }
 </script>
