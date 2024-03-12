@@ -5,11 +5,14 @@
         text-align: center;
     }
 </style>
-
+	
 
     <title>Bomb.com</title>
-    <p id="p">Please enter the 9 digit code to access the plans:</p>
-    <form id="form">
+    <p id="stuff" style="font-size:30px; text-align:center; color:red">Detonation in<p>
+    <p id="timer" style="font-size:50px; text-align:center; color:red"></p>
+    </br></br>
+    <p id="p" style="text-align:center">Please enter the 9 digit code to access the plans:</p>
+    <form id="form" style="text-align:center">
         <input type="text" class="numb" id="1" maxlength="1" oninput="next(1)" />
         <input type="text" class="numb" id="2" maxlength="1" oninput="next(2)"/>
         <input type="text" class="numb" id="3" maxlength="1" oninput="next(3)"/>
@@ -28,6 +31,29 @@
 
 <script>
 	document.getElementById('1').focus();
+    timer()
+const timerInt = window.setInterval(timer, 1000);
+
+	function timer(){
+    	const d = new Date();
+		let minute = 59-d.getUTCMinutes();
+		let second = 59-d.getUTCSeconds();
+        
+        if(minute < 10){
+        	minute = "0" + minute;
+        }else{}
+        if(second < 10){
+        	second = "0" + second;
+        }else{}
+        
+        
+        if(minute < 50 && minute >= 0){
+			document.getElementById("timer").innerHTML = minute + ":" + second;
+        }else{
+        	document.getElementById("timer").innerHTML = "00:00";
+        }
+    }
+    
     
     function test(){
         var WRONG = "incorrect passcode: please try again"
@@ -41,7 +67,10 @@
                             if(document.getElementById('7').value=="4"){
                                 if(document.getElementById('8').value=="0"){
                                     if(document.getElementById('9').value=="7"){
+                        clearInterval(timerInt);
                         document.getElementById('form').style.visibility = 'hidden';
+                        document.getElementById('timer').style.visibility = 'hidden';
+                        document.getElementById('stuff').style.visibility = 'hidden';
                         document.getElementById('p').innerHTML = "Here are da plans"
         }else{alert(WRONG); clear()}
         }else{alert(WRONG); clear()}
