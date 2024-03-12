@@ -1,7 +1,16 @@
 <body>
+    <title>Bomb.com</title>
     <p id="p">Please enter the 9 digit code to access the plans:</p>
     <form id="form">
-        <input type="number" id="code"/>
+        <input type="number" id="1" min="0" max="9"/>
+        <input type="number" id="2" min="0" max="9"/>
+        <input type="number" id="3" min="0" max="9"/>
+        <input type="number" id="4" min="0" max="9"/>
+        <input type="number" id="5" min="0" max="9"/>
+        <input type="number" id="6" min="0" max="9"/>
+        <input type="number" id="7" min="0" max="9"/>
+        <input type="number" id="8" min="0" max="9"/>
+        <input type="number" id="9" min="0" max="9"/>
         <input type="button" value="submit" onclick="test()">
     </form>
     
@@ -11,11 +20,27 @@
 
 <script>
     function test(){
-        if(document.getElementById('code').value=="512100407"){
-            document.getElementById('form').style.visibility = 'hidden';
-            document.getElementById('p').innerHTML = "Here are da plans"
-        }else{
-            alert("incorrect passcode: please try again")
-        }
+        var WRONG = "incorrect passcode: please try again"
+        
+        if(document.getElementById('1').value=="5"){
+          if(document.getElementById('2').value=="1"){
+            if(document.getElementById('3').value=="2"){
+                if(document.getElementById('4').value=="1"){
+                    if(document.getElementById('5').value=="0"){
+                        if(document.getElementById('6').value=="1"){
+                            if(document.getElementById('7').value=="4"){
+                                if(document.getElementById('8').value=="0"){
+                                    if(document.getElementById('9').value=="7"){
+                        document.getElementById('form').style.visibility = 'hidden';
+                        document.getElementById('p').innerHTML = "Here are da plans"
+        }else{alert(WRONG)}
+        }else{alert(WRONG)}
+        }else{alert(WRONG)}
+        }else{alert(WRONG)}
+        }else{alert(WRONG)}
+        }else{alert(WRONG)}
+        }else{alert(WRONG)}
+        }else{alert(WRONG)}  
+        }else{alert(WRONG)}
     }
 </script>
