@@ -114,10 +114,12 @@ const timerInt = setInterval(timer, 1000);
 		for(j = 1; j < 10; J++){
 			if (document.getElementById(j).value.length == 1){
 			}else{
+				document.getElementById(j).focus();
 				sendIt = false;
 			}
 		}
 		if(sendIt){test()}
+		else{}
         }else{}
     }
     
