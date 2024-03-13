@@ -41,11 +41,11 @@
     
 	document.getElementById('1').focus();
     timer();
-const timerInt = window.setInterval(timer, 1000);
+const timerInt = setInterval(timer, 1000);
 
 	function timer(){
     	const d = new Date();
-		let minute = 59-d.getUTCMinutes();
+		let minute = 39-d.getUTCMinutes();
 		let second = 59-d.getUTCSeconds();
         
         if(minute < 10){
