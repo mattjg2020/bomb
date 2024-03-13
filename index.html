@@ -8,7 +8,7 @@
 	
 
     <title>Bomb.com</title>
-    <p id="stuff" style="font-size:30px; text-align:center; color:red">Detonation in<p>
+    <p id="stuff" style="font-size:30px; text-align:center; color:red">Detonation in:<p>
     <p id="timer" style="font-size:50px; text-align:center; color:red"></p>
     </br></br>
     <p id="p" style="text-align:center">Please enter the 9 digit code to access the plans:</p>
@@ -41,7 +41,10 @@ const timerInt = window.setInterval(timer, 1000);
         
         if(minute < 10){
         	minute = "0" + minute;
-        }else{}
+		document.getElementById("timer").style = "color:red";
+        }else{
+		document.getElementById("timer").style = "color:black";
+	}
         if(second < 10){
         	second = "0" + second;
         }else{}
