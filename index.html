@@ -22,7 +22,6 @@
         <input type="text" class="numb" id="7" maxlength="1" oninput="next(7)"/>
         <input type="text" class="numb" id="8" maxlength="1" oninput="next(8)"/>
         <input type="text" class="numb" id="9" maxlength="1" oninput="next(9)"/>
-        <input type="button" id="button" value="submit" onclick="test()">
     </form>
     
 
@@ -110,7 +109,15 @@ const timerInt = setInterval(timer, 1000);
     	if(i<9 && document.getElementById(i).value.length == 1){
     		document.getElementById(i+1).focus();
         }else if (i==9){
-        	document.getElementById("button").focus();
+		var sendIt = true;
+
+		for(j = 1; j < 10; J++){
+			if (document.getElementById(j).value.length == 1){
+			}else{
+				sendIt = false;
+			}
+		}
+		if(sendIt){test()}
         }else{}
     }
     
