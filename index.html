@@ -8,7 +8,7 @@
 	
 
     <title>Bomb.com</title>
-    <p id="stuff" style="font-size:30px; text-align:center; color:red">Detonation in:<p>
+    <p id="stuff" style="font-size:30px; text-align:center;">Detonation in:<p>
     <p id="timer" style="font-size:50px; text-align:center; color:red"></p>
     </br></br>
     <p id="p" style="text-align:center">Please enter the 9 digit code to access the plans:</p>
@@ -30,8 +30,17 @@
 </html>
 
 <script>
+	var context = new AudioContext()
+	var o = context.createOscillator()
+	var  g = context.createGain()
+	o.connect(g)
+	g.connect(context.destination)
+	o.start(0)
+    o.frequency.value = 900
+    g.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 0.09)
+    
 	document.getElementById('1').focus();
-    timer()
+    timer();
 const timerInt = window.setInterval(timer, 1000);
 
 	function timer(){
@@ -51,12 +60,23 @@ const timerInt = window.setInterval(timer, 1000);
         
         
         if(minute < 50 && minute >= 0){
+        	beep(minute);
 			document.getElementById("timer").innerHTML = minute + ":" + second;
         }else{
-        	document.getElementById("timer").innerHTML = "00:00";
+        	document.getElementById("timer").innerHTML = "00:00";                        			clearInterval(timerInt);
+                        document.getElementById('form').style.visibility = 'hidden';
+                        document.getElementById('stuff').style.visibility = 'hidden';
+                        document.getElementById('p').innerHTML = "You Dead Now"
         }
     }
     
+    function beep(minute){
+    	if(minute < 10){
+        	o.frequency.value = 1000
+        }else{}
+    	g.gain.exponentialRampToValueAtTime(1, context.currentTime + 0.01)
+        g.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 0.1)
+    }
     
     function test(){
         var WRONG = "incorrect passcode: please try again"
