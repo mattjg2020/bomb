@@ -3,12 +3,18 @@
 	.numb {
     	width: 3ch; 
         text-align: center;
-
+	}
+    
 	body {
  		font-family: 'Courier New', monospace;
 		background:black;
   		color:green;
 	}
+    
+    input {
+    	background:white;
+        border:0px;
+        color:green;
     }
 </style>
 	
@@ -19,16 +25,15 @@
     </br></br>
     <p id="p" style="text-align:center">Please enter the 9 digit code to access the plans:</p>
     <form id="form" style="text-align:center">
-        <input type="text" class="numb" id="1" maxlength="1" oninput="next(1)" />
-        <input type="text" class="numb" id="2" maxlength="1" oninput="next(2)"/>
-        <input type="text" class="numb" id="3" maxlength="1" oninput="next(3)"/>
-        <input type="text" class="numb" id="4" maxlength="1" oninput="next(4)"/>
-        <input type="text" class="numb" id="5" maxlength="1" oninput="next(5)"/>
-        <input type="text" class="numb" id="6" maxlength="1" oninput="next(6)"/>
-        <input type="text" class="numb" id="7" maxlength="1" oninput="next(7)"/>
-        <input type="text" class="numb" id="8" maxlength="1" oninput="next(8)"/>
-        <input type="text" class="numb" id="9" maxlength="1" oninput="next(9)"/>
-	<button type="button" oninput="test()">Enter</button>
+        <input type="text" class="numb" id="1" maxlength="1" onkeyup="next(1)" />
+        <input type="text" class="numb" id="2" maxlength="1" onkeyup="next(2)"/>
+        <input type="text" class="numb" id="3" maxlength="1" onkeyup="next(3)"/>
+        <input type="text" class="numb" id="4" maxlength="1" onkeyup="next(4)"/>
+        <input type="text" class="numb" id="5" maxlength="1" onkeyup="next(5)"/>
+        <input type="text" class="numb" id="6" maxlength="1" onkeyup="next(6)"/>
+        <input type="text" class="numb" id="7" maxlength="1" onkeyup="next(7)"/>
+        <input type="text" class="numb" id="8" maxlength="1" onkeyup="next(8)"/>
+        <input type="text" class="numb" id="9" maxlength="1" onkeyup="next(9)"/>
     </form>
     
 
@@ -51,7 +56,7 @@ const timerInt = setInterval(timer, 1000);
 
 function timer(){
     	const d = new Date();
-		let minute = 59-d.getUTCMinutes();
+		let minute = 49-d.getUTCMinutes();
 		let second = 59-d.getUTCSeconds();
         
         if(minute < 10){
@@ -116,16 +121,24 @@ function timer(){
     function next(i){
     	if(document.getElementById(i).value.length == 1){
 		var submitIt = true;
+        var empty = 0;
+        
 		for(j = 1; j < 10; j++){
 			if (document.getElementById(j).value.length == 1){
 			}else{
-				document.getElementById(j).focus();
+            	if(empty == 0){
+                	empty = j
+                }else if(i < j && empty < i){
+                	empty = j
+                }else{}
 				submitIt = false;
-				break
 			}
 		}
+        
 		if(submitIt){test()}
-		else{}
+		else{
+             document.getElementById(empty).focus();
+        }
         }else{}
     }
     
