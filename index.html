@@ -3,13 +3,19 @@
 	.numb {
     	width: 3ch; 
         text-align: center;
+
+	body {
+ 		font-family: 'Courier New', monospace;
+		background:black;
+  		color:green;
+	}
     }
 </style>
 	
 
     <title>Bomb.com</title>
     <p id="stuff" style="font-size:30px; text-align:center;">Detonation in:<p>
-    <p id="timer" style="font-size:50px; text-align:center; color:red"></p>
+    <p id="timer" style="font-size:50px; text-align:center;"></p>
     </br></br>
     <p id="p" style="text-align:center">Please enter the 9 digit code to access the plans:</p>
     <form id="form" style="text-align:center">
@@ -52,7 +58,7 @@ const timerInt = setInterval(timer, 1000);
         	minute = "0" + minute;
 		document.getElementById("timer").style = "color:red; font-size:50px; text-align:center;";
         }else{
-		document.getElementById("timer").style = "color:black; font-size:50px; text-align:center;";
+		document.getElementById("timer").style = "color:green; font-size:50px; text-align:center;";
 	}
         if(second < 10){
         	second = "0" + second;
@@ -63,7 +69,8 @@ const timerInt = setInterval(timer, 1000);
         	beep(minute);
 			document.getElementById("timer").innerHTML = minute + ":" + second;
         }else{
-        	document.getElementById("timer").innerHTML = "00:00";                        			clearInterval(timerInt);
+        		document.getElementById("timer").innerHTML = "00:00";                        			
+			clearInterval(timerInt);
                         document.getElementById('form').style.visibility = 'hidden';
                         document.getElementById('stuff').style.visibility = 'hidden';
                         document.getElementById('p').innerHTML = "You Dead Now"
@@ -108,18 +115,16 @@ const timerInt = setInterval(timer, 1000);
     
     function next(i){
     	if(document.getElementById(i).value.length == 1){
-		var sendIt = true;
+		var submitIt = true;
 		for(j = 1; j < 10; j++){
 			if (document.getElementById(j).value.length == 1){
-				if(j == i && j != 9){
-					document.getElementById(i+1).focus();
-				}else{}
 			}else{
 				document.getElementById(j).focus();
-				sendIt = false;
+				submitIt = false;
+				break
 			}
 		}
-		if(sendIt){test()}
+		if(submitIt){test()}
 		else{}
         }else{}
     }
