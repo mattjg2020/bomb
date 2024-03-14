@@ -25,15 +25,15 @@
     </br></br>
     <p id="p" style="text-align:center">Please enter the 9 digit code to access the plans:</p>
     <form id="form" style="text-align:center">
-        <input type="text" class="numb" id="1" maxlength="1" onkeyup="next(1)" />
-        <input type="text" class="numb" id="2" maxlength="1" onkeyup="next(2)"/>
-        <input type="text" class="numb" id="3" maxlength="1" onkeyup="next(3)"/>
-        <input type="text" class="numb" id="4" maxlength="1" onkeyup="next(4)"/>
-        <input type="text" class="numb" id="5" maxlength="1" onkeyup="next(5)"/>
-        <input type="text" class="numb" id="6" maxlength="1" onkeyup="next(6)"/>
-        <input type="text" class="numb" id="7" maxlength="1" onkeyup="next(7)"/>
-        <input type="text" class="numb" id="8" maxlength="1" onkeyup="next(8)"/>
-        <input type="text" class="numb" id="9" maxlength="1" onkeyup="next(9)"/>
+        <input type="text" class="numb" id="1" maxlength="1" onkeyup="next(event,1)"/>
+        <input type="text" class="numb" id="2" maxlength="1" onkeyup="next(event,2)"/>
+        <input type="text" class="numb" id="3" maxlength="1" onkeyup="next(event,3)"/>
+        <input type="text" class="numb" id="4" maxlength="1" onkeyup="next(event,4)"/>
+        <input type="text" class="numb" id="5" maxlength="1" onkeyup="next(event,5)"/>
+        <input type="text" class="numb" id="6" maxlength="1" onkeyup="next(event,6)"/>
+        <input type="text" class="numb" id="7" maxlength="1" onkeyup="next(event,7)"/>
+        <input type="text" class="numb" id="8" maxlength="1" onkeyup="next(event,8)"/>
+        <input type="text" class="numb" id="9" maxlength="1" onkeyup="next(event,9)"/>
     </form>
     
 
@@ -118,28 +118,33 @@ function timer(){
         }else{alert(WRONG); clear()}
     }
     
-    function next(i){
+    function next(event,i){
     	if(document.getElementById(i).value.length == 1){
-		var submitIt = true;
-        var empty = 0;
-        
-		for(j = 1; j < 10; j++){
-			if (document.getElementById(j).value.length == 1){
-			}else{
-            	if(empty == 0){
-                	empty = j
-                }else if(i < j && empty < i){
-                	empty = j
-                }else{}
-				submitIt = false;
-			}
-		}
-        
-		if(submitIt){test()}
-		else{
-             document.getElementById(empty).focus();
-        }
+          var submitIt = true;
+          var empty = 0;
+
+          for(j = 1; j < 10; j++){
+              if (document.getElementById(j).value.length == 1){
+              }else{
+                  if(empty == 0){
+                      empty = j
+                  }else if(i < j && empty < i){
+                      empty = j
+                  }else{}
+                  submitIt = false;
+              }
+          }
+
+          if(submitIt){test()}
+          else{
+                     document.getElementById(empty).focus();
+          }
         }else{}
+		if(event.key == "ArrowLeft" && i != 1){
+ 			document.getElementById(i + -1).focus();
+  		}else if(event.key == "ArrowRight" && i != 9){
+ 			document.getElementById(i + 1).focus();
+  		}else{}
     }
     
     function clear(){
