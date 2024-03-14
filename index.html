@@ -22,6 +22,7 @@
         <input type="text" class="numb" id="7" maxlength="1" oninput="next(7)"/>
         <input type="text" class="numb" id="8" maxlength="1" oninput="next(8)"/>
         <input type="text" class="numb" id="9" maxlength="1" oninput="next(9)"/>
+	<input type="button" oninput="test()">Enter</input>
     </form>
     
 
@@ -106,13 +107,13 @@ const timerInt = setInterval(timer, 1000);
     }
     
     function next(i){
-    	if(i<9 && document.getElementById(i).value.length == 1){
-    		document.getElementById(i+1).focus();
-        }else if (i==9){
+    	if(document.getElementById(i).value.length == 1){
 		var sendIt = true;
-
-		for(j = 1; j < 10; J++){
+		for(j = 1; j < 10; j++){
 			if (document.getElementById(j).value.length == 1){
+				if(j == i && j != 9){
+					document.getElementById(i+1).focus();
+				}else{}
 			}else{
 				document.getElementById(j).focus();
 				sendIt = false;
