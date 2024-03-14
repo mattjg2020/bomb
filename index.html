@@ -37,16 +37,27 @@
         <input type="text" class="numb" id="8" maxlength="1" onkeyup="next(event,8)"/>
         <input type="text" class="numb" id="9" maxlength="1" onkeyup="next(event,9)"/>
     </form>
+    <p id="start" onclick="begining()" style="text-align:center">Click to Access the Plans</p>
     
 
 </body>
 </html>
 
 <script>
-	alert("You better hurry... Time is almost out!")
-	var context = new AudioContext()
-	var o = context.createOscillator()
-	var  g = context.createGain()
+document.getElementById('form').style.visibility = 'hidden';
+document.getElementById('stuff').style.visibility = 'hidden';
+document.getElementById('p').style.visibility = 'hidden';
+var started = false;
+function begining(){
+	timer();
+	document.getElementById('start').style.visibility = 'hidden';
+	document.getElementById('form').style.visibility = 'visible';
+	document.getElementById('stuff').style.visibility = 'visible';
+	document.getElementById('p').style.visibility = 'visible';
+
+	context = new AudioContext()
+	o = context.createOscillator()
+	g = context.createGain()
 	o.connect(g)
 	g.connect(context.destination)
 	o.start(0)
@@ -54,12 +65,15 @@
     g.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 0.09)
     
 	document.getElementById('1').focus();
-    timer();
+    started = true;
+}
+    
 const timerInt = setInterval(timer, 1000);
 
 function timer(){
+if(started){
     	const d = new Date();
-		let minute = 59-d.getUTCMinutes();
+		let minute = 19-d.getUTCMinutes();
 		let second = 59-d.getUTCSeconds();
         
         if(minute < 10){
@@ -83,6 +97,7 @@ function timer(){
                         document.getElementById('stuff').style.visibility = 'hidden';
                         document.getElementById('p').innerHTML = "You Dead Now"
         }
+}else{}        
     }
     
     function beep(minute){
