@@ -49,12 +49,8 @@ document.getElementById('stuff').style.visibility = 'hidden';
 document.getElementById('p').style.visibility = 'hidden';
 var started = false;
 function begining(){
-	alert("you really didn't think it would be that easy, did you?!?")
-	timer();
-	document.getElementById('start').style.visibility = 'hidden';
-	document.getElementById('form').style.visibility = 'visible';
-	document.getElementById('stuff').style.visibility = 'visible';
-	document.getElementById('p').style.visibility = 'visible';
+	document.getElementById('start').innerHTML = 'wut';
+	setTimeout(iGiveUp,1000)
 
 	context = new AudioContext()
 	o = context.createOscillator()
@@ -65,8 +61,14 @@ function begining(){
     o.frequency.value = 900
     g.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 0.09)
     
-	document.getElementById('1').focus();
     started = true;
+}
+function iGiveUp{
+	document.getElementById('start').style.visibility = 'hidden';
+	document.getElementById('form').style.visibility = 'visible';
+	document.getElementById('stuff').style.visibility = 'visible';
+	document.getElementById('p').style.visibility = 'visible';
+	document.getElementById('1').focus();
 }
     
 const timerInt = setInterval(timer, 1000);
