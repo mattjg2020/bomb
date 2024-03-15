@@ -50,7 +50,7 @@ document.getElementById('p').style.visibility = 'hidden';
 var started = false;
 function begining(){
 	document.getElementById('start').innerHTML = 'wut';
-	setTimeout(iGiveUp,1000)
+	iGiveUp()
 
 	context = new AudioContext()
 	o = context.createOscillator()
