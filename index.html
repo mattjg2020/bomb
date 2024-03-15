@@ -60,7 +60,7 @@ function begining(){
 	g.connect(context.destination)
 	o.start(0)
     o.frequency.value = 900
-    g.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 0.09)
+    g.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 0.0001)
     
     started = true;
 }
