@@ -50,7 +50,7 @@ document.getElementById('p').style.visibility = 'hidden';
 var started = false;
 function begining(){
 	document.getElementById('start').innerHTML = 'wut';
-	iGiveUp()
+	setTimeout(iGiveUp,1000)
 
 	context = new AudioContext()
 	o = context.createOscillator()
@@ -63,7 +63,7 @@ function begining(){
     
     started = true;
 }
-function iGiveUp{
+function iGiveUp(){
 	document.getElementById('start').style.visibility = 'hidden';
 	document.getElementById('form').style.visibility = 'visible';
 	document.getElementById('stuff').style.visibility = 'visible';
