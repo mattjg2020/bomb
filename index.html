@@ -47,10 +47,11 @@
 document.getElementById('form').style.visibility = 'hidden';
 document.getElementById('stuff').style.visibility = 'hidden';
 document.getElementById('p').style.visibility = 'hidden';
-var started = false;
+document.getElementById('timer').style.visibility = 'hidden';
+var started = false;	
 function begining(){
 	document.getElementById('start').innerHTML = 'wut';
-	setTimeout(iGiveUp,1000)
+	setTimeout(iGiveUp,3000)
 
 	context = new AudioContext()
 	o = context.createOscillator()
@@ -68,6 +69,7 @@ function iGiveUp(){
 	document.getElementById('form').style.visibility = 'visible';
 	document.getElementById('stuff').style.visibility = 'visible';
 	document.getElementById('p').style.visibility = 'visible';
+	document.getElementById('timer').style.visibility = 'visible';
 	document.getElementById('1').focus();
 }
     
