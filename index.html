@@ -81,13 +81,10 @@ if(started){
 		var TIME = 0;
 		if(d.getUTCMinutes() < 25){
 			TIME = 14-d.getUTCMinutes();
-			alert('first')
 		}else{
 			TIME = (59-d.getUTCMinutes()) + 15;
-			alert('second')
 		}
 		let minute = TIME
-		alert(minute)
 		let second = 59-d.getUTCSeconds();
         
         if(minute < 10){
