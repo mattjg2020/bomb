@@ -78,7 +78,11 @@ const timerInt = setInterval(timer, 1000);
 function timer(){
 if(started){
     	const d = new Date();
-		let minute = 15-d.getUTCMinutes();
+		if(d.getUTCMinutes() < 25){
+			let minute = 14-d.getUTCMinutes();
+		}else{
+			let minute = (59-d.getUTCMinutes()) + 15;
+		}
 		let second = 59-d.getUTCSeconds();
         
         if(minute < 10){
